@@ -1,0 +1,4 @@
+cc_images.zip
+assets/images/originals/
+*.tmp
+.DS_Store
