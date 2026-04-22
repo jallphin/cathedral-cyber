@@ -1,11 +1,11 @@
 /* ==============================================
-   CATHEDRAL CYBER — MAIN SCRIPTS
+   CATHEDRAL CYBER â MAIN SCRIPTS
    ============================================== */
 
 (function () {
   'use strict';
 
-  /* ─────────── Loader ─────────── */
+  /* âââââââââââ Loader âââââââââââ */
   function initLoader() {
     const loader = document.getElementById('loader');
     if (!loader) return;
@@ -20,14 +20,14 @@
     });
   }
 
-  /* ─────────── Typewriter Effect ─────────── */
+  /* âââââââââââ Typewriter Effect âââââââââââ */
   function initTypewriter() {
     const target = document.querySelector('.typewriter-text');
     if (!target) return;
 
     const phrase = 'Federal cybersecurity. Offensive operations. Compliance intelligence.';
     let i = 0;
-    const speed = 80; // ms per character — deliberate, not frantic
+    const speed = 80; // ms per character â deliberate, not frantic
 
     function typeStep() {
       if (i < phrase.length) {
@@ -40,7 +40,7 @@
     typeStep();
   }
 
-  /* ─────────── Scroll Fade-In ─────────── */
+  /* âââââââââââ Scroll Fade-In âââââââââââ */
   function initScrollFadeIn() {
     if (!('IntersectionObserver' in window)) {
       // Fallback: show everything immediately
@@ -64,7 +64,7 @@
     });
   }
 
-  /* ─────────── Nav Scroll Spy ─────────── */
+  /* âââââââââââ Nav Scroll Spy âââââââââââ */
   function initScrollSpy() {
     const nav = document.getElementById('nav');
     const links = document.querySelectorAll('.nav-links a');
@@ -138,7 +138,7 @@
     }
   }
 
-  /* ─────────── Form Validation ─────────── */
+  /* âââââââââââ Form Validation âââââââââââ */
   function initForm() {
     const form = document.getElementById('contact-form');
     if (!form) return;
@@ -174,7 +174,7 @@
     });
   }
 
-  /* ─────────── Add fade-on-scroll class to sections ─────────── */
+  /* âââââââââââ Add fade-on-scroll class to sections âââââââââââ */
   function initFadeTargets() {
     document.querySelectorAll('.about-inner, .services > h2, .services-grid, ' +
       '.tools > h2, .tools-grid, .contact > h2, #contact-form, footer').forEach(function (el) {
@@ -182,7 +182,7 @@
     });
   }
 
-  /* ─────────── Initialize ─────────── */
+  /* âââââââââââ Initialize âââââââââââ */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       initLoader();

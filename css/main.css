@@ -1,9 +1,9 @@
 /* ==============================================
-   CATHEDRAL CYBER — MAIN STYLES
+   CATHEDRAL CYBER â MAIN STYLES
    Brand Source of Truth: darker, sparser, deliberate.
    ============================================== */
 
-/* ─────────── CSS Custom Properties ─────────── */
+/* âââââââââââ CSS Custom Properties âââââââââââ */
 :root {
   --bg-primary:     #0d1117;
   --bg-secondary:   #161b22;
@@ -24,7 +24,7 @@
   --radius-subtle:  2px;
 }
 
-/* ─────────── Reset ─────────── */
+/* âââââââââââ Reset âââââââââââ */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -54,7 +54,7 @@ img, picture {
   display: block;
 }
 
-/* ─────────── Background Texture ─────────── */
+/* âââââââââââ Background Texture âââââââââââ */
 body::before {
   content: '';
   position: fixed;
@@ -65,7 +65,7 @@ body::before {
   z-index: 10000;
 }
 
-/* ─────────── Typography ─────────── */
+/* âââââââââââ Typography âââââââââââ */
 h1, h2 {
   font-family: var(--font-heading);
   color: var(--accent-gold);
@@ -103,7 +103,7 @@ p {
   color: var(--accent-gold);
 }
 
-/* ─────────── Loader ─────────── */
+/* âââââââââââ Loader âââââââââââ */
 #loader {
   position: fixed;
   inset: 0;
@@ -134,7 +134,7 @@ p {
   51%, 99% { opacity: 0; }
 }
 
-/* ─────────── Navigation ─────────── */
+/* âââââââââââ Navigation âââââââââââ */
 #nav {
   position: fixed;
   top: 0;
@@ -231,7 +231,7 @@ p {
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-/* ─────────── Buttons ─────────── */
+/* âââââââââââ Buttons âââââââââââ */
 .btn {
   display: inline-block;
   font-family: var(--font-heading);
@@ -269,7 +269,7 @@ p {
   color: var(--accent-gold);
 }
 
-/* ─────────── Cards ─────────── */
+/* âââââââââââ Cards âââââââââââ */
 .card {
   background: var(--bg-surface);
   border: 1px solid var(--border-divider);
@@ -296,7 +296,7 @@ p {
   letter-spacing: 0.05em;
 }
 
-/* ─────────── Section Dividers ─────────── */
+/* âââââââââââ Section Dividers âââââââââââ */
 .section-divider {
   position: relative;
   border: none;
@@ -320,7 +320,7 @@ p {
   width: fit-content;
 }
 
-/* ─────────── Hero ─────────── */
+/* âââââââââââ Hero âââââââââââ */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -380,7 +380,7 @@ p {
   aspect-ratio: 2 / 3;
 }
 
-/* ─────────── About ─────────── */
+/* âââââââââââ About âââââââââââ */
 .about {
   padding: 120px 24px;
   background: var(--bg-secondary);
@@ -416,7 +416,7 @@ p {
   height: auto;
 }
 
-/* ─────────── Services ─────────── */
+/* âââââââââââ Services âââââââââââ */
 .services {
   padding: 120px 24px;
   background: var(--bg-secondary);
@@ -449,7 +449,7 @@ p {
   line-height: 1.5;
 }
 
-/* ─────────── Tools ─────────── */
+/* âââââââââââ Tools âââââââââââ */
 .tools {
   padding: 120px 24px;
   background: var(--bg-secondary);
@@ -482,7 +482,7 @@ p {
   line-height: 1.5;
 }
 
-/* ─────────── Contact ─────────── */
+/* âââââââââââ Contact âââââââââââ */
 .contact {
   padding: 120px 24px;
   background: var(--bg-primary);
@@ -544,7 +544,7 @@ p {
   border-color: var(--danger);
 }
 
-/* ─────────── Footer ─────────── */
+/* âââââââââââ Footer âââââââââââ */
 footer {
   padding: 64px 24px;
   background: var(--bg-primary);
@@ -567,7 +567,7 @@ footer p {
   color: var(--accent-gold);
 }
 
-/* ─────────── Scroll Fade-In ─────────── */
+/* âââââââââââ Scroll Fade-In âââââââââââ */
 .fade-on-scroll {
   opacity: 0;
   transform: translateY(20px);
@@ -579,7 +579,7 @@ footer p {
   transform: translateY(0);
 }
 
-/* ─────────── Focus States ─────────── */
+/* âââââââââââ Focus States âââââââââââ */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -588,13 +588,13 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
-/* ─────────── Selection ─────────── */
+/* âââââââââââ Selection âââââââââââ */
 ::selection {
   background: rgba(201, 168, 76, 0.25);
   color: var(--text-primary);
 }
 
-/* ─────────── Responsive ─────────── */
+/* âââââââââââ Responsive âââââââââââ */
 @media (max-width: 1024px) {
   .nav-links a.is-active::before {
     left: -16px;
@@ -672,7 +672,7 @@ textarea:focus-visible {
   }
 }
 
-/* ─────────── Reduced Motion ─────────── */
+/* âââââââââââ Reduced Motion âââââââââââ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
