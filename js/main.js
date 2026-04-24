@@ -25,9 +25,9 @@
     const target = document.querySelector('.typewriter-text');
     if (!target) return;
 
-    const phrase = 'Federal cybersecurity. Offensive operations. Compliance intelligence.';
+    const phrase = 'Offensive security for those who can\'t afford to be surprised.';
     let i = 0;
-    const speed = 80; // ms per character — deliberate, not frantic
+    const speed = 40; // ms per character
 
     function typeStep() {
       if (i < phrase.length) {
@@ -177,7 +177,8 @@
   /* ─────────── Add fade-on-scroll class to sections ─────────── */
   function initFadeTargets() {
     document.querySelectorAll('.about-inner, .services > h2, .services-grid, ' +
-      '.tools > h2, .tools-grid, .contact > h2, #contact-form, footer').forEach(function (el) {
+      '.tools > h2, .tools-grid, .contact > h2, #contact-form, .disclaimer, footer, ' +
+      '.section-subtitle, .hero-body').forEach(function (el) {
       el.classList.add('fade-on-scroll');
     });
   }
