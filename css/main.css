@@ -1,19 +1,20 @@
 /* ==============================================
-   CATHEDRAL CYBER â MAIN STYLES
+   CATHEDRAL CYBER — MAIN STYLES
    Brand Source of Truth: darker, sparser, deliberate.
    ============================================== */
 
-/* âââââââââââ CSS Custom Properties âââââââââââ */
+/* ─────────── CSS Custom Properties ─────────── */
 :root {
-  --bg-primary:     #0d1117;
-  --bg-secondary:   #161b22;
-  --bg-surface:     #1c2333;
-  --accent-gold:    #c9a84c;
-  --accent-amber:   #8b6914;
-  --text-primary:   #e8e0d0;
-  --text-secondary: #8b949e;
-  --border-divider: #4a3f1f;
-  --danger:         #6e1a1a;
+  --bg-primary:      #0d1117;
+  --bg-secondary:    #1c2333;
+  --bg-surface:      #1c2333;
+  --bg-deep-shadow:  #080d14;
+  --accent-gold:     #c9a84c;
+  --text-primary:    #e6edf3;
+  --text-secondary:  #8b949e;
+  --border-divider:  #c9a84c;
+  --border-subtle:   #8b949e;
+  --danger:          #6e1a1a;
 
   --font-heading:     'Cinzel', Georgia, serif;
   --font-subheading:  'Cormorant Garamond', Georgia, serif;
@@ -24,7 +25,7 @@
   --radius-subtle:  2px;
 }
 
-/* âââââââââââ Reset âââââââââââ */
+/* ─────────── Reset ─────────── */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -41,7 +42,7 @@ body {
   color: var(--text-secondary);
   font-family: var(--font-body);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.75;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
@@ -54,7 +55,7 @@ img, picture {
   display: block;
 }
 
-/* âââââââââââ Background Texture âââââââââââ */
+/* ─────────── Background Texture ─────────── */
 body::before {
   content: '';
   position: fixed;
@@ -65,23 +66,23 @@ body::before {
   z-index: 10000;
 }
 
-/* âââââââââââ Typography âââââââââââ */
+/* ─────────── Typography ─────────── */
 h1, h2 {
   font-family: var(--font-heading);
-  color: var(--accent-gold);
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 h1 {
+  color: var(--accent-gold);
   font-size: clamp(36px, 5vw, 64px);
   line-height: 1.1;
 }
 
 h2 {
-  font-size: clamp(28px, 3.5vw, 40px);
   color: var(--text-primary);
+  font-size: clamp(28px, 3.5vw, 40px);
   line-height: 1.2;
 }
 
@@ -103,7 +104,23 @@ p {
   color: var(--accent-gold);
 }
 
-/* âââââââââââ Loader âââââââââââ */
+.text-caption {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.text-terminal {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--accent-gold);
+}
+
+.text-terminal::before {
+  content: '>_ ';
+}
+
+/* ─────────── Loader ─────────── */
 #loader {
   position: fixed;
   inset: 0;
@@ -126,15 +143,20 @@ p {
 }
 
 #loader .cursor {
-  animation: blink 1s step-end infinite;
+  animation: blink-fast 800ms step-end infinite;
 }
 
-@keyframes blink {
+@keyframes blink-fast {
   0%, 50%, 100% { opacity: 1; }
   51%, 99% { opacity: 0; }
 }
 
-/* âââââââââââ Navigation âââââââââââ */
+@keyframes blink-slow {
+  0%, 50%, 100% { opacity: 1; }
+  51%, 99% { opacity: 0; }
+}
+
+/* ─────────── Navigation ─────────── */
 #nav {
   position: fixed;
   top: 0;
@@ -193,23 +215,13 @@ p {
   letter-spacing: 0.1em;
   color: var(--text-secondary);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 150ms ease;
   position: relative;
 }
 
 .nav-links a:hover,
 .nav-links a.is-active {
   color: var(--accent-gold);
-}
-
-.nav-links a.is-active::before {
-  content: '>_';
-  font-family: var(--font-mono);
-  margin-right: 6px;
-  position: absolute;
-  left: -20px;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 /* Mobile Toggle */
@@ -231,12 +243,12 @@ p {
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-/* âââââââââââ Buttons âââââââââââ */
+/* ─────────── Buttons ─────────── */
 .btn {
   display: inline-block;
-  font-family: var(--font-heading);
+  font-family: var(--font-mono);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   text-decoration: none;
@@ -260,7 +272,7 @@ p {
 
 .btn-secondary {
   background: var(--bg-surface);
-  border-color: var(--border-divider);
+  border-color: var(--border-subtle);
   color: var(--text-primary);
 }
 
@@ -269,10 +281,10 @@ p {
   color: var(--accent-gold);
 }
 
-/* âââââââââââ Cards âââââââââââ */
+/* ─────────── Cards ─────────── */
 .card {
   background: var(--bg-surface);
-  border: 1px solid var(--border-divider);
+  border: 1px solid var(--accent-gold);
   border-radius: var(--radius-sharp);
   padding: 32px;
   transition: border-color 0.2s ease;
@@ -296,12 +308,69 @@ p {
   letter-spacing: 0.05em;
 }
 
-/* âââââââââââ Section Dividers âââââââââââ */
+/* Card variant for tools — Deep Shadow background */
+.card-dark {
+  background: var(--bg-deep-shadow);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0;
+  padding: 32px;
+  transition: border-color 0.2s ease;
+}
+
+.card-dark:hover {
+  border-color: var(--accent-gold);
+}
+
+/* SVG icon inside service cards */
+.card-svg-icon {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 16px;
+}
+
+.card-svg-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: var(--accent-gold);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Status badges for tool cards */
+.badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border: 1px solid;
+  border-radius: 0;
+  margin-right: 6px;
+}
+
+.badge-active {
+  color: var(--accent-gold);
+  border-color: var(--accent-gold);
+}
+
+.badge-opensource {
+  color: var(--border-subtle);
+  border-color: var(--border-subtle);
+}
+
+.card-badges {
+  margin-top: 16px;
+}
+
+/* ─────────── Section Dividers ─────────── */
 .section-divider {
   position: relative;
   border: none;
-  border-top: 1px solid var(--border-divider);
-  max-width: 200px;
+  border-top: 1px solid var(--accent-gold);
+  max-width: 120px;
   margin: 0 auto;
 }
 
@@ -320,7 +389,7 @@ p {
   width: fit-content;
 }
 
-/* âââââââââââ Hero âââââââââââ */
+/* ─────────── Hero ─────────── */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -333,7 +402,7 @@ p {
   margin: 0 auto;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 3fr 2fr;
   gap: 64px;
   align-items: center;
 }
@@ -342,6 +411,25 @@ p {
   display: flex;
   flex-direction: column;
   gap: 32px;
+}
+
+.hero-preheader {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--accent-gold);
+  letter-spacing: 0.05em;
+}
+
+.hero-preheader .cursor-blink {
+  animation: blink-fast 800ms step-end infinite;
+}
+
+.hero-body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  max-width: 520px;
 }
 
 .hero-title {
@@ -363,24 +451,33 @@ p {
 }
 
 .hero-motto .cursor-blink {
-  animation: blink 1s step-end infinite;
+  animation: blink-fast 800ms step-end infinite;
 }
 
 .hero-portrait {
   display: flex;
   justify-content: center;
+  position: relative;
+}
+
+.hero-portrait::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, var(--bg-primary) 100%);
+  pointer-events: none;
 }
 
 .hero-portrait picture,
 .hero-portrait img {
-  border: 1px solid var(--border-divider);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sharp);
   max-height: 70vh;
   object-fit: contain;
   aspect-ratio: 2 / 3;
 }
 
-/* âââââââââââ About âââââââââââ */
+/* ─────────── About ─────────── */
 .about {
   padding: 120px 24px;
   background: var(--bg-secondary);
@@ -405,6 +502,14 @@ p {
   max-width: 480px;
 }
 
+.founder-title {
+  font-family: var(--font-subheading);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 24px;
+}
+
 .about-crest {
   display: flex;
   justify-content: center;
@@ -416,7 +521,12 @@ p {
   height: auto;
 }
 
-/* âââââââââââ Services âââââââââââ */
+.section-subtitle {
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+/* ─────────── Services ─────────── */
 .services {
   padding: 120px 24px;
   background: var(--bg-secondary);
@@ -449,15 +559,15 @@ p {
   line-height: 1.5;
 }
 
-/* âââââââââââ Tools âââââââââââ */
+/* ─────────── Tools ─────────── */
 .tools {
   padding: 120px 24px;
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
 }
 
 .tools > h2 {
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 16px;
 }
 
 .tools-grid {
@@ -482,7 +592,7 @@ p {
   line-height: 1.5;
 }
 
-/* âââââââââââ Contact âââââââââââ */
+/* ─────────── Contact ─────────── */
 .contact {
   padding: 120px 24px;
   background: var(--bg-primary);
@@ -493,12 +603,12 @@ p {
 
 .contact > h2 {
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 16px;
   color: var(--accent-gold);
 }
 
 #contact-form {
-  max-width: 640px;
+  max-width: 600px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -513,7 +623,7 @@ p {
 
 .form-group label {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--text-secondary);
@@ -521,8 +631,8 @@ p {
 
 .form-group input,
 .form-group textarea {
-  background: var(--bg-primary);
-  border: 1px solid var(--border-divider);
+  background: var(--bg-deep-shadow);
+  border: 1px solid var(--border-subtle);
   color: var(--text-primary);
   font-family: var(--font-mono);
   font-size: 15px;
@@ -544,7 +654,17 @@ p {
   border-color: var(--danger);
 }
 
-/* âââââââââââ Footer âââââââââââ */
+.disclaimer {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-style: italic;
+  text-align: center;
+  margin-top: 32px;
+  max-width: 600px;
+}
+
+/* ─────────── Footer ─────────── */
 footer {
   padding: 64px 24px;
   background: var(--bg-primary);
@@ -555,23 +675,31 @@ footer {
 }
 
 footer p {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.05em;
   color: var(--text-secondary);
 }
 
+footer .copyright {
+  text-transform: none;
+}
+
 .footer-prompt {
+  font-family: var(--font-mono);
   font-size: 16px;
   color: var(--accent-gold);
 }
 
-/* âââââââââââ Scroll Fade-In âââââââââââ */
+.footer-prompt .cursor-blink {
+  animation: blink-slow 1s step-end infinite;
+}
+
+/* ─────────── Scroll Fade-In ─────────── */
 .fade-on-scroll {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity 400ms ease-out, transform 400ms ease-out;
 }
 
 .fade-on-scroll.is-visible {
@@ -579,7 +707,7 @@ footer p {
   transform: translateY(0);
 }
 
-/* âââââââââââ Focus States âââââââââââ */
+/* ─────────── Focus States ─────────── */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -588,16 +716,16 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
-/* âââââââââââ Selection âââââââââââ */
+/* ─────────── Selection ─────────── */
 ::selection {
   background: rgba(201, 168, 76, 0.25);
   color: var(--text-primary);
 }
 
-/* âââââââââââ Responsive âââââââââââ */
+/* ─────────── Responsive ─────────── */
 @media (max-width: 1024px) {
-  .nav-links a.is-active::before {
-    left: -16px;
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -628,13 +756,6 @@ textarea:focus-visible {
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
-  }
-
-  .nav-links a.is-active::before {
-    position: static;
-    display: inline;
-    transform: none;
-    margin-right: 6px;
   }
 
   .hero-inner {
@@ -672,7 +793,18 @@ textarea:focus-visible {
   }
 }
 
-/* âââââââââââ Reduced Motion âââââââââââ */
+/* ─────────── Reduced Motion ─────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .cursor-blink {
+    animation: blink-fast 800ms step-end infinite;
+  }
+  .fade-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 400ms ease-out, transform 400ms ease-out;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

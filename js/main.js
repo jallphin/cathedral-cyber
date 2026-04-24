@@ -1,11 +1,11 @@
 /* ==============================================
-   CATHEDRAL CYBER â MAIN SCRIPTS
+   CATHEDRAL CYBER — MAIN SCRIPTS
    ============================================== */
 
 (function () {
   'use strict';
 
-  /* âââââââââââ Loader âââââââââââ */
+  /* ─────────── Loader ─────────── */
   function initLoader() {
     const loader = document.getElementById('loader');
     if (!loader) return;
@@ -20,14 +20,14 @@
     });
   }
 
-  /* âââââââââââ Typewriter Effect âââââââââââ */
+  /* ─────────── Typewriter Effect ─────────── */
   function initTypewriter() {
     const target = document.querySelector('.typewriter-text');
     if (!target) return;
 
-    const phrase = 'Federal cybersecurity. Offensive operations. Compliance intelligence.';
+    const phrase = 'Offensive security for those who can\'t afford to be surprised.';
     let i = 0;
-    const speed = 80; // ms per character â deliberate, not frantic
+    const speed = 40; // ms per character
 
     function typeStep() {
       if (i < phrase.length) {
@@ -40,7 +40,7 @@
     typeStep();
   }
 
-  /* âââââââââââ Scroll Fade-In âââââââââââ */
+  /* ─────────── Scroll Fade-In ─────────── */
   function initScrollFadeIn() {
     if (!('IntersectionObserver' in window)) {
       // Fallback: show everything immediately
@@ -64,7 +64,7 @@
     });
   }
 
-  /* âââââââââââ Nav Scroll Spy âââââââââââ */
+  /* ─────────── Nav Scroll Spy ─────────── */
   function initScrollSpy() {
     const nav = document.getElementById('nav');
     const links = document.querySelectorAll('.nav-links a');
@@ -138,7 +138,7 @@
     }
   }
 
-  /* âââââââââââ Form Validation âââââââââââ */
+  /* ─────────── Form Validation ─────────── */
   function initForm() {
     const form = document.getElementById('contact-form');
     if (!form) return;
@@ -174,15 +174,16 @@
     });
   }
 
-  /* âââââââââââ Add fade-on-scroll class to sections âââââââââââ */
+  /* ─────────── Add fade-on-scroll class to sections ─────────── */
   function initFadeTargets() {
     document.querySelectorAll('.about-inner, .services > h2, .services-grid, ' +
-      '.tools > h2, .tools-grid, .contact > h2, #contact-form, footer').forEach(function (el) {
+      '.tools > h2, .tools-grid, .contact > h2, #contact-form, .disclaimer, footer, ' +
+      '.section-subtitle, .hero-body').forEach(function (el) {
       el.classList.add('fade-on-scroll');
     });
   }
 
-  /* âââââââââââ Initialize âââââââââââ */
+  /* ─────────── Initialize ─────────── */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       initLoader();
