@@ -57,11 +57,18 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.05 });
 
     document.querySelectorAll('.fade-on-scroll').forEach(function (el) {
       observer.observe(el);
     });
+
+    // Safety fallback: ensure nothing stays invisible
+    window.setTimeout(function () {
+      document.querySelectorAll('.fade-on-scroll:not(.is-visible)').forEach(function (el) {
+        el.classList.add('is-visible');
+      });
+    }, 2000);
   }
 
   /* ─────────── Nav Scroll Spy ─────────── */
@@ -186,17 +193,17 @@
   /* ─────────── Initialize ─────────── */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
-      initLoader();
+      initFadeTargets();
       initScrollFadeIn();
+      initLoader();
       initScrollSpy();
       initForm();
-      initFadeTargets();
     });
   } else {
-    initLoader();
+    initFadeTargets();
     initScrollFadeIn();
+    initLoader();
     initScrollSpy();
     initForm();
-    initFadeTargets();
   }
 })();
