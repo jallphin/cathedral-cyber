@@ -246,6 +246,8 @@ p {
 /* ─────────── Buttons ─────────── */
 .btn {
   display: inline-block;
+  width: fit-content;
+  align-self: flex-start;
   font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 400;
@@ -480,7 +482,7 @@ p {
 /* ─────────── About ─────────── */
 .about {
   padding: 120px 24px;
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
 }
 
 .about-inner {
@@ -529,7 +531,7 @@ p {
 /* ─────────── Services ─────────── */
 .services {
   padding: 120px 24px;
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
 }
 
 .services > h2 {
