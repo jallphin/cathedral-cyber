@@ -270,6 +270,7 @@ p {
   background: var(--accent-gold);
   color: var(--bg-primary);
   outline: none;
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
 }
 
 .btn-secondary {
@@ -289,11 +290,13 @@ p {
   border: 1px solid var(--accent-gold);
   border-radius: var(--radius-sharp);
   padding: 32px;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
   border-color: var(--accent-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--accent-gold);
 }
 
 .card-top-accent {
@@ -316,11 +319,13 @@ p {
   border: 1px solid var(--border-subtle);
   border-radius: 0;
   padding: 32px;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card-dark:hover {
   border-color: var(--accent-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--accent-gold);
 }
 
 /* SVG icon inside service cards */
@@ -462,21 +467,11 @@ p {
   position: relative;
 }
 
-.hero-portrait::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at center, transparent 40%, var(--bg-primary) 100%);
-  pointer-events: none;
-}
-
-.hero-portrait picture,
 .hero-portrait img {
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sharp);
-  max-height: 70vh;
+  max-width: 420px;
+  width: 100%;
+  height: auto;
   object-fit: contain;
-  aspect-ratio: 2 / 3;
 }
 
 /* ─────────── About ─────────── */
@@ -515,12 +510,16 @@ p {
 .about-crest {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
+.about-crest picture,
 .about-crest img {
-  max-width: 400px;
-  width: 100%;
-  height: auto;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sharp);
+  max-height: 60vh;
+  width: auto;
+  object-fit: contain;
 }
 
 .section-subtitle {
@@ -700,8 +699,8 @@ footer .copyright {
 /* ─────────── Scroll Fade-In ─────────── */
 .fade-on-scroll {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 400ms ease-out, transform 400ms ease-out;
+  transform: translateY(30px);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
 }
 
 .fade-on-scroll.is-visible {
@@ -767,6 +766,10 @@ textarea:focus-visible {
   }
 
   .hero-portrait img {
+    max-width: 280px;
+  }
+
+  .about-crest img {
     max-height: 50vh;
   }
 
@@ -808,16 +811,28 @@ textarea:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  .cursor-blink {
+    animation: none;
   }
 
   .fade-on-scroll {
     opacity: 1;
     transform: none;
+    transition: opacity 0.01ms;
+  }
+
+  .nav-links a::before,
+  .nav-links a::after {
+    transition: none;
+  }
+
+  .btn {
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .card,
+  .card-dark {
+    transition: border-color 0.15s ease;
   }
 
   #loader {
