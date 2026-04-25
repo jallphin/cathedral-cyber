@@ -1,0 +1,123 @@
+---
+interface Project {
+  name: string;
+  prompt: string;
+  tagline: string;
+  description: string;
+  tech: string[];
+  link?: string;
+  githubId?: string;
+  stars?: number;
+  forks?: number;
+}
+
+const projects: Project[] = [
+  {
+    name: "WRAITH",
+    prompt: ">_ WRAITH",
+    tagline: "Passive shell session capture for red team engagements",
+    description:
+      "Transparent PTY wrapper. Every keystroke and output event is timestamped to SQLite. AI synthesis clusters activity by target and phase, maps to MITRE ATT\u0026CK, and exports structured findings.",
+    tech: ["Go", "SQLite", "Bubbletea", "Anthropic/OpenAI"],
+    link: "https://github.com/jallphin/wraith",
+    githubId: "wraith",
+  },
+  {
+    name: "SPITFIRE",
+    prompt: ">_ SPITFIRE",
+    tagline: "Deployable Nerve Center for Pentest Engagements",
+    description:
+      "Portable Docker-based red team server. Matrix Synapse, Covenant C2, IVRE recon, Gitea, CyberChef, Nextcloud, and more — deploy, operate, destroy.",
+    tech: ["Docker", "Shell", "HTML", "Kali Linux"],
+    link: "https://github.com/jallphin/spitfire",
+    githubId: "spitfire",
+    stars: 16,
+    forks: 8,
+  },
+  {
+    name: "HELICS",
+    prompt: ">_ HELICS",
+    tagline: "Continuous Compliance Monitoring on Blockchain",
+    description:
+      "Hyperledger-based SCAP/STIG hash fingerprinting. Detects security configuration drift in real time with immutable audit trails.",
+    tech: ["Hyperledger", "SCAP", "STIG"],
+  },
+  {
+    name: "HAYSTACKR",
+    prompt: ">_ HAYSTACKR",
+    tagline: "Terminal-First Vehicle Diagnostics",
+    description:
+      "UDS-based active diagnostics and right-to-repair tooling for CAN bus networks. Teensy 4.1 + SN65HVD230 hardware interface.",
+    tech: ["C++", "Teensy 4.1", "CAN", "UDS"],
+  },
+];
+
+const cardBase =
+  "group relative bg-bg-tertiary border border-white/10 rounded-xl p-6 md:p-8 transition-all duration-300 ease-out hover:-translate-y-1 hover:glow-border hover:border-accent-primary/30";
+const topLine =
+  "absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity";
+---
+
+<section id="arsenal" class="py-24 md:py-32 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <span class="text-accent-primary font-mono text-sm">>_ ARSENAL</span>
+      <h2 class="mt-4 font-display text-4xl md:text-5xl font-bold text-text-primary">Tools Forged in the Field</h2>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-6">
+      {projects.map((p) => {
+        const inner = (
+          <>
+            <div class={topLine}></div>
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-lg font-bold text-accent-primary">{p.prompt}</span>
+              {" "}
+              {p.link && (
+                <span class="text-text-muted">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                </span>
+              )}
+            </div>
+            <h3 class="mt-3 font-display text-xl font-bold text-text-primary">{p.tagline}</h3>
+            <p class="mt-3 text-text-secondary text-sm leading-relaxed">{p.description}</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {p.tech.map((t) => (
+                <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold border font-mono border-white/10 text-text-secondary bg-white/5">
+                  {t}
+                </span>
+              ))}
+            </div>
+            <div class="mt-4 flex items-center gap-4">
+              <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold border font-mono border-accent-secondary/30 text-accent-secondary bg-accent-secondary/10">
+                ACTIVE
+              </span>
+              <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold border font-mono border-accent-primary/30 text-accent-primary bg-accent-primary/10">
+                OPEN SOURCE
+              </span>
+              {p.stars != null && (
+                <span class="inline-flex items-center gap-1 text-text-muted text-xs font-mono">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  {p.stars}
+                </span>
+              )}
+              {p.forks != null && (
+                <span class="inline-flex items-center gap-1 text-text-muted text-xs font-mono">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M6 9v3a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V9"/><path d="M12 15V9"/></svg>
+                  {p.forks}
+                </span>
+              )}
+            </div>
+          </>
+        );
+        return p.link ? (
+          <a href={p.link} target="_blank" rel="noopener noreferrer" class={cardBase}>
+            {inner}
+          </a>
+        ) : (
+          <div class={cardBase}>{inner}</div>
+        );
+      })}
+    </div>
+  </div>
+</section>

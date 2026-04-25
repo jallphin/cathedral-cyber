@@ -1,0 +1,59 @@
+---
+---
+<section id="contact" class="py-24 md:py-32 border-t border-white/5">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <span class="text-accent-primary font-mono text-sm">>_ ESTABLISH CONTACT</span>
+      <h2 class="mt-4 font-display text-4xl md:text-5xl font-bold text-text-primary">Engage</h2>
+      <p class="mt-4 text-text-secondary">Engagements by referral or direct inquiry only.</p>
+    </div>
+
+    <form id="contact-form" class="bg-bg-secondary border border-white/5 rounded-xl p-6 md:p-8 space-y-6">
+      <div>
+        <label for="org" class="block text-sm font-medium text-text-secondary font-mono">Organization <span class="text-text-muted">*</span></label>
+        <input id="org" name="org" type="text" required class="mt-2 w-full bg-bg-primary border border-white/10 rounded-lg px-4 py-2.5 text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent-primary focus:ring-1 focus:ring-accent-primary transition-colors" placeholder="Acme Corp" />
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <label for="name" class="block text-sm font-medium text-text-secondary font-mono">Point of Contact <span class="text-text-muted">*</span></label>
+          <input id="name" name="name" type="text" required class="mt-2 w-full bg-bg-primary border border-white/10 rounded-lg px-4 py-2.5 text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent-primary focus:ring-1 focus:ring-accent-primary transition-colors" placeholder="Jane Doe" />
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-text-secondary font-mono">Email <span class="text-text-muted">*</span></label>
+          <input id="email" name="email" type="email" required class="mt-2 w-full bg-bg-primary border border-white/10 rounded-lg px-4 py-2.5 text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent-primary focus:ring-1 focus:ring-accent-primary transition-colors" placeholder="jane@acme.corp" />
+        </div>
+      </div>
+      <div>
+        <label for="notes" class="block text-sm font-medium text-text-secondary font-mono">Scope / Notes</label>
+        <textarea id="notes" name="notes" rows="5" class="mt-2 w-full bg-bg-primary border border-white/10 rounded-lg px-4 py-2.5 text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent-primary focus:ring-1 focus:ring-accent-primary transition-colors" placeholder="Describe the engagement scope, timeline, or any special requirements..."></textarea>
+      </div>
+      <button type="submit" class="inline-flex items-center gap-2 bg-accent-primary text-bg-primary font-mono font-bold px-6 py-3 rounded-md hover:brightness-110 transition-all">
+        TRANSMIT >_
+      </button>
+    </form>
+
+    <p class="mt-6 text-center text-xs text-text-muted">
+      This form opens your default email client. No data is stored or transmitted through any server.
+    </p>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contact-form');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const org = String(data.get('org') ?? '').trim();
+    const name = String(data.get('name') ?? '').trim();
+    const email = String(data.get('email') ?? '').trim();
+    const notes = String(data.get('notes') ?? '').trim();
+    const subject = encodeURIComponent(`Contact inquiry from ${org} — ${name}`);
+    const body = encodeURIComponent(
+      `Organization: ${org}\n` +
+      `Contact: ${name}\n` +
+      `Email: ${email}\n\n` +
+      `Scope / Notes:\n${notes || 'N/A'}`
+    );
+    window.location.href = `mailto:contact@cathedralcyber.com?subject=${subject}&body=${body}`;
+  });
+</script>

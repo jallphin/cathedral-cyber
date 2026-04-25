@@ -1,6 +1,9 @@
+node_modules/
+dist/
+.astro/
+*.log
 cc_images.zip
 assets/images/originals/
 *.tmp
 .DS_Store
-.agents_tmp/
 .agents_tmp/

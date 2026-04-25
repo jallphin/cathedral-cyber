@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../sections/Hero.astro';
+import About from '../sections/About.astro';
+import Services from '../sections/Services.astro';
+import Projects from '../sections/Projects.astro';
+import Contact from '../sections/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <Nav />
+  <main class="pt-16">
+    <Hero />
+    <div class="gsap-reveal"><About /></div>
+    <div class="gsap-reveal"><Services /></div>
+    <div class="gsap-reveal"><Projects /></div>
+    <div class="gsap-reveal"><Contact /></div>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray('.gsap-reveal').forEach((section: Element) => {
+      gsap.fromTo(
+        section,
+        { opacity: 0.9, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 85%',
+            once: true,
+          },
+        }
+      );
+    });
+</script>

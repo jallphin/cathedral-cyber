@@ -1,0 +1,74 @@
+---
+const links = [
+  { href: "#about", label: "About" },
+  { href: "#capabilities", label: "Services" },
+  { href: "#arsenal", label: "Projects" },
+  { href: "#contact", label: "Contact" },
+];
+---
+
+<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-bg-primary/80 backdrop-blur-md transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="#" class="font-display font-bold text-xl tracking-wider text-text-primary">
+        CATHEDRAL <span class="text-accent-primary">CYBER</span>
+      </a>
+      <div class="hidden md:flex items-center space-x-8">
+        {links.map(link => (
+          <a href={link.href} class="text-sm font-medium text-text-secondary hover:text-accent-primary transition-colors relative group">
+            {link.label}
+            <span class="absolute -bottom-1 left-0 w-0 h-px bg-accent-primary transition-all group-hover:w-full" />
+          </a>
+        ))}
+      </div>
+      <button id="menu-btn" class="md:hidden text-text-primary p-2 rounded-md border border-white/10" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        <svg id="icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-bg-primary/95 backdrop-blur-md">
+    <div class="px-4 py-4 space-y-1">
+      {links.map(link => (
+        <a href={link.href} class="block rounded-lg px-3 py-3 text-base font-medium text-text-secondary hover:text-accent-primary hover:bg-white/5 transition-colors mobile-link">
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script>
+  (function () {
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+    const links = document.querySelectorAll('.mobile-link');
+    if (!btn || !menu || !iconOpen || !iconClose) return;
+
+    function toggle() {
+      const isHidden = menu.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', String(!isHidden));
+      iconOpen.classList.toggle('hidden', !isHidden);
+      iconClose.classList.toggle('hidden', isHidden);
+      document.body.classList.toggle('overflow-hidden', !isHidden);
+    }
+
+    btn.addEventListener('click', toggle);
+
+    links.forEach((a) => {
+      a.addEventListener('click', () => {
+        if (!menu.classList.contains('hidden')) toggle();
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      const nav = document.getElementById('main-nav');
+      if (nav && !nav.contains(e.target as Node) && !menu.classList.contains('hidden')) {
+        toggle();
+      }
+    });
+  })();
+</script>
