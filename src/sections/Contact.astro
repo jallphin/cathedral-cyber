@@ -1,59 +1,58 @@
 ---
 ---
-<section id="contact" class="py-24 md:py-32 border-t border-white/5">
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-12">
-      <span class="text-accent-primary font-mono text-sm">>_ ESTABLISH CONTACT</span>
-      <h2 class="mt-4 font-display text-4xl md:text-5xl font-bold text-text-primary">Engage</h2>
-      <p class="mt-4 text-text-secondary">Engagements by referral or direct inquiry only.</p>
-    </div>
+<section id="contact" class="section">
+  <hr class="section-divider" />
+  <div class="container" style="max-width: 640px;">
+    <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 2rem;">Ready to scope an engagement or want to learn more about what we do? Reach out.</p>
 
-    <form id="contact-form" class="bg-bg-secondary border border-white/5 rounded-xl p-6 md:p-8 space-y-6">
-      <div>
-        <label for="org" class="block text-sm font-medium text-text-secondary font-mono">Organization <span class="text-text-muted">*</span></label>
-        <input id="org" name="org" type="text" required class="mt-2 w-full bg-bg-primary border border-white/10 rounded-lg px-4 py-2.5 text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent-primary focus:ring-1 focus:ring-accent-primary transition-colors" placeholder="Acme Corp" />
+    <form id="contact-form">
+      <div class="form-group">
+        <label for="org" class="form-label">Organization</label>
+        <input id="org" name="org" type="text" required class="form-input" placeholder="Acme Corp" />
       </div>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div>
-          <label for="name" class="block text-sm font-medium text-text-secondary font-mono">Point of Contact <span class="text-text-muted">*</span></label>
-          <input id="name" name="name" type="text" required class="mt-2 w-full bg-bg-primary border border-white/10 rounded-lg px-4 py-2.5 text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent-primary focus:ring-1 focus:ring-accent-primary transition-colors" placeholder="Jane Doe" />
+
+      <div class="form-row">
+        <div class="form-group half">
+          <label for="name" class="form-label">Point of Contact</label>
+          <input id="name" name="name" type="text" required class="form-input" placeholder="Jane Doe" />
         </div>
-        <div>
-          <label for="email" class="block text-sm font-medium text-text-secondary font-mono">Email <span class="text-text-muted">*</span></label>
-          <input id="email" name="email" type="email" required class="mt-2 w-full bg-bg-primary border border-white/10 rounded-lg px-4 py-2.5 text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent-primary focus:ring-1 focus:ring-accent-primary transition-colors" placeholder="jane@acme.corp" />
+        <div class="form-group half">
+          <label for="email" class="form-label">Email</label>
+          <input id="email" name="email" type="email" required class="form-input" placeholder="jane@acme.corp" />
         </div>
       </div>
-      <div>
-        <label for="notes" class="block text-sm font-medium text-text-secondary font-mono">Scope / Notes</label>
-        <textarea id="notes" name="notes" rows="5" class="mt-2 w-full bg-bg-primary border border-white/10 rounded-lg px-4 py-2.5 text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent-primary focus:ring-1 focus:ring-accent-primary transition-colors" placeholder="Describe the engagement scope, timeline, or any special requirements..."></textarea>
+
+      <div class="form-group">
+        <label for="notes" class="form-label">Scope / Notes</label>
+        <textarea id="notes" name="notes" class="form-input" placeholder="Describe the engagement scope, timeline, or any special requirements..."></textarea>
       </div>
-      <button type="submit" class="inline-flex items-center gap-2 bg-accent-primary text-bg-primary font-mono font-bold px-6 py-3 rounded-md hover:brightness-110 transition-all">
-        TRANSMIT >_
-      </button>
+
+      <button type="submit" class="btn" style="margin-top: 0.5rem;">TRANSMIT</button>
     </form>
 
-    <p class="mt-6 text-center text-xs text-text-muted">
-      This form opens your default email client. No data is stored or transmitted through any server.
-    </p>
+    <p style="margin-top: 1.75rem; font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-heading);">No data is stored or transmitted through any server. Clicking TRANSMIT opens your default email client.</p>
   </div>
 </section>
 
 <script>
-  const form = document.getElementById('contact-form');
-  form?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const data = new FormData(form);
-    const org = String(data.get('org') ?? '').trim();
-    const name = String(data.get('name') ?? '').trim();
-    const email = String(data.get('email') ?? '').trim();
-    const notes = String(data.get('notes') ?? '').trim();
-    const subject = encodeURIComponent(`Contact inquiry from ${org} — ${name}`);
-    const body = encodeURIComponent(
-      `Organization: ${org}\n` +
-      `Contact: ${name}\n` +
-      `Email: ${email}\n\n` +
-      `Scope / Notes:\n${notes || 'N/A'}`
-    );
-    window.location.href = `mailto:contact@cathedralcyber.com?subject=${subject}&body=${body}`;
-  });
+  (function () {
+    var form = document.getElementById('contact-form');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = new FormData(form);
+      var org = String(data.get('org') || '').trim();
+      var name = String(data.get('name') || '').trim();
+      var email = String(data.get('email') || '').trim();
+      var notes = String(data.get('notes') || '').trim();
+      var subject = encodeURIComponent('Inquiry from cathedralcyber.com');
+      var body = encodeURIComponent(
+        'Organization: ' + org + '\n' +
+        'Contact: ' + name + '\n' +
+        'Email: ' + email + '\n\n' +
+        'Scope / Notes:\n' + (notes || 'N/A')
+      );
+      window.location.href = 'mailto:contact@cathedralcyber.com?subject=' + subject + '&body=' + body;
+    });
+  })();
 </script>

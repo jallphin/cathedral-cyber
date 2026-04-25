@@ -11,36 +11,12 @@ import Footer from '../components/Footer.astro';
 
 <Layout>
   <Nav />
-  <main class="pt-16">
+  <main>
     <Hero />
-    <div class="gsap-reveal"><About /></div>
-    <div class="gsap-reveal"><Services /></div>
-    <div class="gsap-reveal"><Projects /></div>
-    <div class="gsap-reveal"><Contact /></div>
+    <About />
+    <Services />
+    <Projects />
+    <Contact />
   </main>
   <Footer />
 </Layout>
-
-<script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  gsap.registerPlugin(ScrollTrigger);
-
-  gsap.utils.toArray('.gsap-reveal').forEach((section: Element) => {
-      gsap.fromTo(
-        section,
-        { opacity: 0.9, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 85%',
-            once: true,
-          },
-        }
-      );
-    });
-</script>

@@ -1,42 +1,15 @@
 ---
 ---
-<footer class="border-t border-white/5 bg-bg-secondary py-10">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-    <div class="flex items-center gap-3">
-      <div class="w-8 h-8 rounded-md bg-bg-primary flex items-center justify-center border border-white/10">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-5 h-5" fill="none">
-          <path d="M30 70 L50 30 L70 70" stroke="#00f0ff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-      </div>
-      <span class="font-display font-bold text-sm tracking-wider text-text-primary">CATHEDRAL CYBER</span>
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-note">CATHEDRAL CYBER</div>
+
+    <div class="footer-note">
+      <a href="https://github.com/jallphin" target="_blank" rel="noopener noreferrer" class="link-plain">GitHub</a>
+      <span style="color: var(--text-muted); margin-inline: 0.5rem;">/</span>
+      <a href="https://www.linkedin.com/in/jamesallphin" target="_blank" rel="noopener noreferrer" class="link-plain">LinkedIn</a>
     </div>
 
-    <div class="flex items-center gap-6">
-      <a href="https://github.com/jallphin" target="_blank" rel="noopener noreferrer" class="text-text-secondary hover:text-accent-primary transition-colors" aria-label="GitHub">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-      </a>
-      <a href="https://www.linkedin.com/in/jamesallphin" target="_blank" rel="noopener noreferrer" class="text-text-secondary hover:text-accent-primary transition-colors" aria-label="LinkedIn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-      </a>
-    </div>
-
-    <div class="flex items-center gap-2 text-text-muted text-xs font-mono">
-      <span>>_</span>
-      <span class="cursor-blink"></span>
-    </div>
-  </div>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 text-center text-text-muted text-xs">
-    © {new Date().getFullYear()} Cathedral Cyber. All rights reserved.
+    <div class="footer-note">© {new Date().getFullYear()}</div>
   </div>
 </footer>
-
-<style>
-  .cursor-blink::after {
-    content: '\2588';
-    animation: blink 1s step-end infinite;
-    color: var(--color-accent-primary);
-  }
-  @keyframes blink {
-    50% { opacity: 0; }
-  }
-</style>
