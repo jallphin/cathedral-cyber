@@ -11,7 +11,7 @@ interface Project {
 const projects: Project[] = [
   {
     name: "Wraith",
-    description: "Real-time shell session capture. Every keystroke timestamped, AI-synthesized to MITRE ATT\u0026CK. The op is the report.",
+    description: "Real-time shell session capture. Every keystroke timestamped, AI-synthesized to MITRE ATT&CK. The op is the report.",
     tags: ["Go", "SQLite", "Bubbletea", "Anthropic/OpenAI"],
     status: "Active",
     license: "Open Source",
@@ -45,17 +45,19 @@ const projects: Project[] = [
 <section id="arsenal" class="section">
   <hr class="section-divider" />
   <div class="container">
-    <div class="grid-1">
+    <div class="grid-1 reveal-stagger">
       {projects.map((p) => (
-        <div class="card arsenal-card">
-          <div style="display:flex; align-items:baseline; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
-            <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin:0;">{p.name}</h3>
+        <div class="card arsenal-card reveal">
+          <div class="arsenal-header">
+            <h3 class="card-title" style="margin-bottom: 0;">{p.name}</h3>
             {p.link && (
-              <a href={p.link} target="_blank" rel="noopener noreferrer" class="link-plain" style="font-family: var(--font-heading); font-size: 0.8rem;">github.com/jallphin/{p.name.toLowerCase()} →</a>
+              <a href={p.link} target="_blank" rel="noopener noreferrer" class="link-plain arsenal-link">
+                github.com/jallphin/{p.name.toLowerCase()} &rarr;
+              </a>
             )}
           </div>
-          <p style="margin-top: 0.75rem; font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary);">{p.description}</p>
-          <div style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;">
+          <p class="card-body" style="margin-top: 0.75rem;">{p.description}</p>
+          <div class="arsenal-tags">
             {p.tags.map((t) => (
               <span class="tag">{t}</span>
             ))}
@@ -67,3 +69,25 @@ const projects: Project[] = [
     </div>
   </div>
 </section>
+
+<style>
+  .arsenal-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .arsenal-link {
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+  }
+  .arsenal-tags {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+  }
+</style>

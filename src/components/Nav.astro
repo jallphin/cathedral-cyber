@@ -19,19 +19,22 @@ const links = [
       </button>
     </div>
     <button class="mobile-menu-btn" id="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
-      <span id="menu-icon">☰</span>
+      <span id="menu-icon">&#9776;</span>
     </button>
   </div>
   <div class="mobile-menu container" id="mobile-menu">
     {links.map(link => (
-      <a href={link.href} class="nav-link mobile-link">{link.label}</a>
+      <a href={link.href} class="mobile-link">{link.label}</a>
     ))}
-    <button class="theme-toggle" id="mobile-theme-toggle" aria-label="Toggle theme">
-      <span id="mobile-toggle-label">TERM</span>
-    </button>
+    <div style="padding: 0.75rem 1.5rem;">
+      <button class="theme-toggle" id="mobile-theme-toggle" aria-label="Toggle theme">
+        <span id="mobile-toggle-label">TERM</span>
+      </button>
+    </div>
   </div>
 </nav>
 
+<!-- Theme toggle logic -->
 <script>
   (function () {
     var toggle = document.getElementById('theme-toggle');
@@ -41,7 +44,7 @@ const links = [
     var fontLink = document.getElementById('theme-fonts');
     var root = document.documentElement;
 
-    function setTheme(name) {
+    function setTheme(name: string) {
       root.setAttribute('data-theme', name);
       localStorage.setItem('cc-theme', name);
       var text = name === 'forge' ? 'FORGE' : 'TERM';
@@ -49,9 +52,9 @@ const links = [
       if (mobileLabel) mobileLabel.textContent = text;
       if (fontLink) {
         if (name === 'forge') {
-          fontLink.href = "https://fonts.googleapis.com/css2?family=Bitter:wght@400;700\u0026family=Source+Sans+Pro:wght@400;600\u0026display=swap";
+          fontLink.href = "https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap";
         } else {
-          fontLink.href = "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700\u0026family=IBM+Plex+Sans:wght@400;500\u0026display=swap";
+          fontLink.href = "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500&display=swap";
         }
       }
     }
@@ -64,7 +67,7 @@ const links = [
     if (toggle) toggle.addEventListener('click', cycle);
     if (mobileToggle) mobileToggle.addEventListener('click', cycle);
 
-    // init label
+    // Init label from stored theme
     var stored = localStorage.getItem('cc-theme') || 'terminal';
     var text = stored === 'forge' ? 'FORGE' : 'TERM';
     if (label) label.textContent = text;
@@ -72,6 +75,7 @@ const links = [
   })();
 </script>
 
+<!-- Mobile menu logic -->
 <script>
   (function () {
     var btn = document.getElementById('menu-btn');
@@ -79,26 +83,44 @@ const links = [
     var icon = document.getElementById('menu-icon');
     if (!btn || !menu || !icon) return;
 
-    function toggle() {
+    function toggleMenu() {
       var open = menu.classList.toggle('open');
       btn.setAttribute('aria-expanded', String(open));
-      icon.textContent = open ? '×' : '☰';
+      icon.innerHTML = open ? '&times;' : '&#9776;';
       document.body.style.overflow = open ? 'hidden' : '';
     }
 
-    btn.addEventListener('click', toggle);
+    btn.addEventListener('click', toggleMenu);
 
     document.querySelectorAll('.mobile-link').forEach(function (a) {
       a.addEventListener('click', function () {
-        if (menu.classList.contains('open')) toggle();
+        if (menu.classList.contains('open')) toggleMenu();
       });
     });
 
     document.addEventListener('click', function (e) {
       var nav = document.getElementById('main-nav');
-      if (nav && !nav.contains(e.target) && menu.classList.contains('open')) {
-        toggle();
+      if (nav && !nav.contains(e.target as Node) && menu.classList.contains('open')) {
+        toggleMenu();
       }
     });
+  })();
+</script>
+
+<!-- Nav scroll behavior -->
+<script>
+  (function () {
+    var nav = document.getElementById('main-nav');
+    if (!nav) return;
+    var scrolled = false;
+    function check() {
+      var shouldScroll = window.scrollY > 20;
+      if (shouldScroll !== scrolled) {
+        scrolled = shouldScroll;
+        nav.classList.toggle('scrolled', scrolled);
+      }
+    }
+    window.addEventListener('scroll', check, { passive: true });
+    check();
   })();
 </script>

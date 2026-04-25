@@ -3,9 +3,9 @@
 <section id="contact" class="section">
   <hr class="section-divider" />
   <div class="container" style="max-width: 640px;">
-    <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 2rem;">Ready to scope an engagement or want to learn more about what we do? Reach out.</p>
+    <p class="contact-intro reveal">Ready to scope an engagement or want to learn more about what we do? Reach out.</p>
 
-    <form id="contact-form">
+    <form id="contact-form" class="reveal">
       <div class="form-group">
         <label for="org" class="form-label">Organization</label>
         <input id="org" name="org" type="text" required class="form-input" placeholder="Acme Corp" />
@@ -27,12 +27,28 @@
         <textarea id="notes" name="notes" class="form-input" placeholder="Describe the engagement scope, timeline, or any special requirements..."></textarea>
       </div>
 
-      <button type="submit" class="btn" style="margin-top: 0.5rem;">TRANSMIT</button>
+      <button type="submit" class="btn" style="margin-top: 0.75rem;">TRANSMIT</button>
     </form>
 
-    <p style="margin-top: 1.75rem; font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-heading);">No data is stored or transmitted through any server. Clicking TRANSMIT opens your default email client.</p>
+    <p class="contact-disclaimer reveal">No data is stored or transmitted through any server. Clicking TRANSMIT opens your default email client.</p>
   </div>
 </section>
+
+<style>
+  .contact-intro {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+  .contact-disclaimer {
+    margin-top: 1.75rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-family: var(--font-heading);
+    letter-spacing: 0.02em;
+  }
+</style>
 
 <script>
   (function () {
@@ -40,7 +56,7 @@
     if (!form) return;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var data = new FormData(form);
+      var data = new FormData(form as HTMLFormElement);
       var org = String(data.get('org') || '').trim();
       var name = String(data.get('name') || '').trim();
       var email = String(data.get('email') || '').trim();
