@@ -1,8 +1,22 @@
 ---
+const base = import.meta.env.BASE_URL;
 ---
 <section id="hero" class="hero">
   <div class="container">
-    <h1 class="hero-title reveal">CATHEDRAL CYBER</h1>
-    <p class="hero-tagline reveal">Objective-driven offensive security.</p>
+    <img
+      src={`${base}cathedral_cyber.png`}
+      alt="Cathedral Cyber — Objective-driven offensive security."
+      class="hero-logo reveal"
+    />
   </div>
 </section>
+
+<style>
+  .hero-logo {
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+</style>
