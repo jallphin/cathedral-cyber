@@ -1,37 +1,63 @@
 ---
 const links = [
   { href: "#about", label: "About" },
-  { href: "#capabilities", label: "Services" },
-  { href: "#arsenal", label: "Projects" },
+  { href: "#capabilities", label: "Capabilities" },
+  { href: "#arsenal", label: "Arsenal" },
   { href: "#contact", label: "Contact" },
 ];
 ---
 
-<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-bg-primary/80 backdrop-blur-md transition-all duration-300">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 border-b border-stone bg-bg-primary/90 backdrop-blur-md">
+  <div class="container-site">
     <div class="flex items-center justify-between h-16">
-      <a href="#" class="font-display font-bold text-xl tracking-wider text-text-primary">
-        CATHEDRAL <span class="text-accent-primary">CYBER</span>
+      <a href="#" class="flex items-center h-8 hover:opacity-90 transition-opacity">
+        <img
+          src="/assets/images/wordmark.png"
+          alt="Cathedral Cyber"
+          class="h-full w-auto object-contain"
+          loading="eager"
+          decoding="async"
+        />
       </a>
-      <div class="hidden md:flex items-center space-x-8">
+      <div class="hidden md:flex items-center gap-8">
         {links.map(link => (
-          <a href={link.href} class="text-sm font-medium text-text-secondary hover:text-accent-primary transition-colors relative group">
+          <a
+            href={link.href}
+            class="nav-link text-sm font-medium text-text-secondary hover:text-text-primary transition-colors relative group"
+            data-section={link.href.replace('#', '')}
+          >
             {link.label}
-            <span class="absolute -bottom-1 left-0 w-0 h-px bg-accent-primary transition-all group-hover:w-full" />
+            <span class="absolute -bottom-1 left-0 w-0 h-px bg-accent transition-all duration-300 group-hover:w-full" />
           </a>
         ))}
       </div>
-      <button id="menu-btn" class="md:hidden text-text-primary p-2 rounded-md border border-white/10" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
-        <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-        <svg id="icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="M6 6l12 12"/></svg>
+      <button
+        id="menu-btn"
+        class="md:hidden text-text-primary p-2 -mr-2 border border-stone hover:border-stone-light transition-colors"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter">
+          <line x1="4" x2="20" y1="7" y2="7"/>
+          <line x1="4" x2="20" y1="12" y2="12"/>
+          <line x1="4" x2="20" y1="17" y2="17"/>
+        </svg>
+        <svg id="icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter">
+          <line x1="5" x2="19" y1="5" y2="19"/>
+          <line x1="19" x2="5" y1="5" y2="19"/>
+        </svg>
       </button>
     </div>
   </div>
 
-  <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-bg-primary/95 backdrop-blur-md">
-    <div class="px-4 py-4 space-y-1">
+  <div id="mobile-menu" class="hidden md:hidden border-t border-stone bg-bg-primary">
+    <div class="container-site py-6 space-y-1">
       {links.map(link => (
-        <a href={link.href} class="block rounded-lg px-3 py-3 text-base font-medium text-text-secondary hover:text-accent-primary hover:bg-white/5 transition-colors mobile-link">
+        <a
+          href={link.href}
+          class="mobile-link block px-3 py-3 text-base font-medium text-text-secondary hover:text-text-primary hover:bg-bg-raised transition-colors"
+        >
           {link.label}
         </a>
       ))}
@@ -46,14 +72,16 @@ const links = [
     const iconOpen = document.getElementById('icon-open');
     const iconClose = document.getElementById('icon-close');
     const links = document.querySelectorAll('.mobile-link');
+    const navLinks = document.querySelectorAll('.nav-link');
     if (!btn || !menu || !iconOpen || !iconClose) return;
 
     function toggle() {
       const isHidden = menu.classList.toggle('hidden');
-      btn.setAttribute('aria-expanded', String(!isHidden));
-      iconOpen.classList.toggle('hidden', !isHidden);
-      iconClose.classList.toggle('hidden', isHidden);
-      document.body.classList.toggle('overflow-hidden', !isHidden);
+      const isOpen = !isHidden;
+      btn.setAttribute('aria-expanded', String(isOpen));
+      iconOpen.classList.toggle('hidden', isOpen);
+      iconClose.classList.toggle('hidden', !isOpen);
+      document.body.classList.toggle('overflow-hidden', isOpen);
     }
 
     btn.addEventListener('click', toggle);
@@ -66,9 +94,31 @@ const links = [
 
     document.addEventListener('click', (e) => {
       const nav = document.getElementById('main-nav');
-      if (nav && !nav.contains(e.target as Node) && !menu.classList.contains('hidden')) {
+      if (nav && !nav.contains(e.target) && !menu.classList.contains('hidden')) {
         toggle();
       }
     });
+
+    // Simple scroll spy for desktop nav
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.id;
+              navLinks.forEach((link) => {
+                link.classList.toggle('text-accent', link.dataset.section === id);
+                link.classList.toggle('text-text-secondary', link.dataset.section !== id);
+              });
+            }
+          });
+        },
+        { rootMargin: '-50% 0px -50% 0px', threshold: 0 }
+      );
+
+      document.querySelectorAll('section[id]').forEach((section) => {
+        observer.observe(section);
+      });
+    }
   })();
 </script>

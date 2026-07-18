@@ -1,28 +1,36 @@
 # Cathedral Cyber — Project Knowledge
 
 ## Architecture
-- Static single-page site: `index.html` + `css/main.css` + `js/main.js`
-- Assets: `assets/images/` (crest, favicon, founder portrait) + `assets/icons/` (SVG service icons, inlined in HTML)
-- Deployed via GitHub Pages from `main` branch: https://jallphin.github.io/cathedral-cyber/
-- Development branches: `v2` (dev), `main` (prod) — both must be kept in sync
+- Astro static site in `src/` built to `dist/`.
+- Entry page: `src/pages/index.astro`.
+- Layouts: `src/layouts/Layout.astro`.
+- Sections: `src/sections/`.
+- Reusable components: `src/components/`.
+- Styles: `src/styles/tokens.css` (Tailwind v4 theme) + `src/styles/global.css`.
+- Public assets: `public/assets/images/` (copied to `dist/` as-is).
+- Legacy static files archived as `index.legacy.html`, `css/main.legacy.css`, `js/main.legacy.js`.
+- Site: https://jallphin.github.io/cathedral-cyber/
 
-## Design System (v1.0 Spec)
-- **Colors**: Body `#0d1117` (--bg-primary), Surface/Card `#1c2333` (--bg-surface), Deep shadow `#080d14`
-- **Accent**: Gold `#c9a84c` throughout (no amber variant)
-- **Typography**: Cormorant Garamond (headings/italic), JetBrains Mono (monospace/terminal), Inter (body)
-- **Key patterns**: All sections use `--bg-primary` as base bg. Cards use `--bg-surface` or `--bg-deep-shadow` for contrast.
-- **Buttons**: `align-self: flex-start` to prevent flex-stretch in column layouts
-- **Terminal prefix**: `.text-terminal::before` adds `>_ ` prefix automatically
-- **Section dividers**: 120px gold rules with `>_` center motif
-- **Logo wordmark**: Must show "CATHEDRAL CYBER" (not truncated to just "CATHEDRAL")
+## Design System — Gothic Minimalism
+- **Palette**: near-black stone backgrounds, 1px stone borders, restrained gold accent (`#a48b4e`) used only for hairline rules, focus rings, hover fills, and active states.
+- **No**: neon colors, heavy gradients, noise overlays, rounded corners on cards, shadows, Cinzel/blackletter type.
+- **Yes**: flat planes, precise geometry, generous negative space, Space Grotesk display type, Inter body, JetBrains Mono terminal prompts.
+- **Brand line**: *Engineered like stone. Operated like a red team.*
 
-## Known Issues & Gotchas
-- GitHub Pages caches aggressively — hard refresh (Ctrl+Shift+R) needed after pushes
-- JS init order matters: `initFadeTargets()` must run before `initScrollFadeIn()` or sections stay invisible
-- `.hero-text` is a flex column — without `align-self: flex-start`, buttons stretch to full width
-- `--bg-secondary` (#1c2333) is defined but unused — sections should all use `--bg-primary` (#0d1117)
+## Component Patterns
+- Use `Card.astro`, `Badge.astro`, `SectionTitle.astro`, `Button.astro`, `Icon.astro`, `Stat.astro`, `TrustBar.astro`, `ToolCard.astro`, `ToolCardContent.astro`.
+- Cards have 1px stone borders, no border-radius, no shadows. Accent appears on hover as a 1px top rule.
+- Buttons: `primary` (accent border + hover fill), `secondary` (stone border), `ghost` (text + arrow).
 
 ## Build/Deploy
-- No build step — push to `main` triggers GitHub Pages rebuild
-- After changes on main, always cherry-pick/merge to v2: `git checkout v2 && git merge main`
-- Local dev server: `python3 -m http.server 8081` from project root
+- `npm install` then `npm run build`.
+- Build output: `dist/`.
+- Deploy `dist/` to GitHub Pages via a GitHub Action (recommended) or the `gh-pages` branch.
+- Local dev: `npm run dev` (or `npm run preview` after a build).
+- GitHub Pages `base` path is `/cathedral-cyber` — keep asset and route paths consistent with `astro.config.mjs`.
+
+## Known Issues & Gotchas
+- GitHub Pages caches aggressively — hard refresh (Ctrl+Shift+R) needed after pushes.
+- The remote branches `site-revamp-claude-2026` and `site-revamp-kimi-2026` are stale; confirm before deleting.
+- `v2` branch is legacy; it can be retired once the Astro build is deployed from `main`.
+- Do not reintroduce GSAP unless a specific advanced animation requires it. Use CSS + IntersectionObserver for scroll reveals.

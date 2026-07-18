@@ -1,22 +1,68 @@
 ---
-const { title = "CATHEDRAL CYBER | Red Team Operations & Adversary Simulation" } = Astro.props;
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "CATHEDRAL CYBER — Adversary Simulation & Red Team Operations",
+  description = "Cathedral Cyber provides red team operations, penetration testing, and adversary simulation for defense contractors and federal agencies.",
+} = Astro.props;
+
+const canonicalUrl = "https://cathedralcyber.com/";
+const ogImage = "https://cathedralcyber.com/assets/images/logo-primary.png";
 ---
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title}</title>
-  <meta name="description" content="Elite red team operations, penetration testing, and adversary simulation for defense contractors and federal agencies." />
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#070809" />
+
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:image" content={ogImage} />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <link rel="canonical" href={canonicalUrl} />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon-180x180.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/images/favicon-512x512.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23050505'/%3E%3Cpath d='M30 70 L50 30 L70 70' stroke='%2300f0ff' stroke-width='8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+
+  <title>{title}</title>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Cathedral Cyber",
+      "url": "https://cathedralcyber.com/",
+      "description": "Red team operations and adversary simulation for defense contractors and federal agencies.",
+      "logo": "https://cathedralcyber.com/assets/images/logo-primary.png",
+      "sameAs": [
+        "https://github.com/jallphin",
+        "https://www.linkedin.com/in/jamesallphin"
+      ]
+    }
+  </script>
+
   <style is:global>
     @import "../styles/global.css";
   </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col bg-bg-primary text-text-primary">
   <slot />
 </body>
 </html>

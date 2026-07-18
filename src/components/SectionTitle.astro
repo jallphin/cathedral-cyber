@@ -1,14 +1,19 @@
 ---
 interface Props {
+  eyebrow?: string;
   title: string;
   subtitle?: string;
-  id?: string;
+  align?: "left" | "center";
 }
-const { title, subtitle, id } = Astro.props;
+const { eyebrow, title, subtitle, align = "center" } = Astro.props;
+const alignClass = align === "left" ? "text-left" : "text-center";
 ---
-<div class="mb-12 md:mb-16 text-center" id={id}>
-  <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-gradient uppercase">{title}</h2>
+<div class={`mb-12 md:mb-16 ${alignClass}`}>
+  {eyebrow && (
+    <p class="font-mono text-xs tracking-[0.2em] text-accent uppercase mb-4">{eyebrow}</p>
+  )}
+  <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-text-primary uppercase">{title}</h2>
   {subtitle && (
-    <p class="mt-4 text-text-secondary text-lg md:text-xl max-w-2xl mx-auto">{subtitle}</p>
+    <p class={`mt-4 text-text-secondary text-lg md:text-xl max-w-2xl ${align === "center" ? "mx-auto" : ""}`}>{subtitle}</p>
   )}
 </div>

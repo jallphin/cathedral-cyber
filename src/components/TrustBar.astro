@@ -1,0 +1,22 @@
+---
+const items = [
+  { label: "Clearance", value: "TS/SCI Eligible (Previously Held)" },
+  { label: "Certification", value: "OSCP" },
+  { label: "Set-Aside", value: "SDVOSB" },
+];
+---
+
+<div class="border border-stone bg-bg-surface">
+  <div class="grid grid-cols-1 sm:grid-cols-3">
+    {
+      items.map((item, index) => (
+        <div
+          class={`px-5 py-5 ${index !== items.length - 1 ? "border-b sm:border-b-0 sm:border-r border-stone" : ""}`}
+        >
+          <p class="text-[10px] font-mono uppercase tracking-[0.2em] text-text-muted mb-1">{item.label}</p>
+          <p class="text-sm font-medium text-text-primary">{item.value}</p>
+        </div>
+      ))
+    }
+  </div>
+</div>

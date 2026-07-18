@@ -4,11 +4,11 @@ interface Props {
   variant?: "default" | "accent" | "active";
 }
 const { text, variant = "default" } = Astro.props;
-const base = "inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold border font-mono";
+const base = "inline-flex items-center px-2.5 py-0.5 text-xs font-medium border font-mono";
 const styles = {
-  default: "border-white/10 text-text-secondary bg-white/5",
-  accent: "border-accent-primary/30 text-accent-primary bg-accent-primary/10",
-  active: "border-accent-secondary/30 text-accent-secondary bg-accent-secondary/10",
+  default: "border-stone text-text-secondary bg-bg-raised",
+  accent: "border-accent text-accent bg-accent/5",
+  active: "border-stone-light text-text-secondary bg-bg-raised",
 };
 ---
 <span class={`${base} ${styles[variant]}`}>{text}</span>

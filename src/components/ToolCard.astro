@@ -1,0 +1,53 @@
+---
+
+import ToolCardContent from "./ToolCardContent.astro";
+
+interface Props {
+  name: string;
+  tagline: string;
+  description: string;
+  tech: string[];
+  link?: string;
+  status?: "public" | "private";
+  stars?: number;
+  forks?: number;
+}
+
+const { name, tagline, description, tech, link, status, stars, forks } = Astro.props;
+---
+
+{
+  link ? (
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group relative block bg-bg-surface border border-stone p-6 md:p-8 transition-all duration-300 hover:border-stone-light hover:bg-bg-raised"
+    >
+      <div class="absolute top-0 left-0 right-0 h-px bg-accent opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true"></div>
+      <ToolCardContent
+        name={name}
+        tagline={tagline}
+        description={description}
+        tech={tech}
+        link={link}
+        status={status}
+        stars={stars}
+        forks={forks}
+      />
+    </a>
+  ) : (
+    <div class="group relative bg-bg-surface border border-stone p-6 md:p-8 transition-all duration-300 hover:border-stone-light hover:bg-bg-raised">
+      <div class="absolute top-0 left-0 right-0 h-px bg-accent opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true"></div>
+      <ToolCardContent
+        name={name}
+        tagline={tagline}
+        description={description}
+        tech={tech}
+        status={status}
+        stars={stars}
+        forks={forks}
+      />
+    </div>
+  )
+}

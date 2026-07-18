@@ -1,0 +1,59 @@
+---
+interface Props {
+  href?: string;
+  type?: "button" | "submit";
+  variant?: "primary" | "secondary" | "ghost";
+  class?: string;
+}
+
+const {
+  href,
+  type = "button",
+  variant = "primary",
+  class: className = "",
+} = Astro.props;
+
+const base =
+  "inline-flex items-center gap-2 font-mono text-sm font-medium tracking-wide transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary";
+
+const variants = {
+  primary:
+    "px-6 py-3 border border-accent text-accent hover:bg-accent hover:text-bg-primary",
+  secondary:
+    "px-6 py-3 border border-stone text-text-secondary hover:border-text-secondary hover:text-text-primary",
+  ghost:
+    "px-0 py-2 text-text-secondary hover:text-accent group",
+};
+
+const classes = `${base} ${variants[variant]} ${className}`;
+---
+
+{
+  href ? (
+    <a href={href} class={classes}>
+      <slot />
+      {variant === "ghost" && (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="square"
+          stroke-linejoin="miter"
+          class="transition-transform duration-200 group-hover:translate-x-1"
+        >
+          <line x1="5" x2="19" y1="12" y2="12" />
+          <line x1="12" x2="19" y1="5" y2="12" />
+          <line x1="12" x2="19" y1="19" y2="12" />
+        </svg>
+      )}
+    </a>
+  ) : (
+    <button type={type} class={classes}>
+      <slot />
+    </button>
+  )
+}

@@ -3,8 +3,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   output: 'static',
-  site: 'https://jallphin.github.io',
-  base: '/cathedral-cyber',
+  site: 'https://cathedralcyber.com',
+  base: '/',
   vite: {
     plugins: [tailwindcss()]
   }
