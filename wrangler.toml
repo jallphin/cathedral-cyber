@@ -2,8 +2,7 @@ name = "cathedral-cyber"
 compatibility_date = "2026-07-18"
 
 # Cloudflare Pages settings
-[site]
-bucket = "./dist"
+pages_build_output_dir = "dist"
 
 # Project slug for Cloudflare Pages. The live domain is cathedralcyber.com.
 # Build command used by Cloudflare Pages Git integration: npm run build
