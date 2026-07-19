@@ -10,7 +10,7 @@
   <rect x="57" y="52" width="1011" height="571" fill="none" stroke="#a48b4e" stroke-width="1.5"/>
 
   <!-- Icon mark top center -->
-  <image x="497.5" y="72" width="130" height="130" xlink:href="../public/assets/images/icon.png"/>
+  <image x="497.5" y="72" width="130" height="130" xlink:href="assets/icon.png"/>
 
   <!-- Name -->
   <text x="562.5" y="275" text-anchor="middle" font-family="'Space Grotesk', 'Inter', sans-serif" font-size="48" font-weight="500" letter-spacing="2" fill="#e8eaed">James Allphin</text>

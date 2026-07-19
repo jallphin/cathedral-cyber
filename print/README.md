@@ -18,6 +18,6 @@
 4. Export as PDF/X-1a or PDF/X-4 for the print shop.
 
 ## Assets
-Linked from `../public/assets/images/`:
-- `wordmark.png` — text logo
-- `icon.png` — standalone icon mark
+Assets included in `assets/` for easy packaging:
+- `assets/wordmark.png` — text logo
+- `assets/icon.png` — standalone icon mark

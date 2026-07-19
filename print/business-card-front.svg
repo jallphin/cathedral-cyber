@@ -10,7 +10,7 @@
   <rect x="57" y="52" width="1011" height="571" fill="none" stroke="#a48b4e" stroke-width="1.5"/>
 
   <!-- Wordmark logo centered -->
-  <image x="180" y="160" width="765" height="240" xlink:href="../public/assets/images/wordmark.png"/>
+  <image x="180" y="160" width="765" height="240" xlink:href="assets/wordmark.png"/>
 
   <!-- Tagline -->
   <text x="562.5" y="445" text-anchor="middle" font-family="'Inter', 'Space Grotesk', sans-serif" font-size="22" letter-spacing="4" fill="#98a0a8">ENGINEERED LIKE STONE. OPERATED LIKE A RED TEAM.</text>
