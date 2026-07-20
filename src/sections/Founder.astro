@@ -1,0 +1,46 @@
+---
+import SectionTitle from "../components/SectionTitle.astro";
+---
+
+<section id="founder" class="section-padding border-t border-stone">
+  <div class="container-site">
+    <SectionTitle
+      eyebrow=">_ Founder"
+      title="James Allphin"
+      subtitle="26 years of offensive operations. One mission: make defenders better."
+      align="left"
+    />
+
+    <div class="grid lg:grid-cols-3 gap-12 items-start mt-12">
+      <div class="lg:col-span-1">
+        <div class="relative">
+          <div class="absolute inset-0 border border-stone translate-x-1 translate-y-1"></div>
+          <img
+            src="/assets/images/founder.jpg"
+            alt="James Allphin"
+            class="relative w-full h-auto border border-stone bg-bg-surface"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+
+      <div class="lg:col-span-2 space-y-6 text-text-secondary text-lg leading-relaxed">
+        <p class="text-text-primary">
+          I spent over a decade at NIWC Pacific as Chief Hacker and Senior Penetration Tester, leading offensive engagements against the DoD's most critical systems. From warship LAN lockers to SOCOM programs, I've operated in the places that don't make it onto resumes.
+        </p>
+        <p>
+          Cathedral Cyber is the culmination of that work: a small, veteran-owned red team and penetration testing consultancy built for DoD and federal clients who need clarity, not marketing. We think like adversaries so your defenders don't have to.
+        </p>
+        <p>
+          My research in continuous integrity monitoring — using blockchain to prove what changed on a system and when — grew out of frustration with compliance checklists that measure paperwork instead of resilience. The best defense isn't perfect documentation. It's perfect execution.
+        </p>
+        <div class="pt-4">
+          <p class="font-mono text-sm text-accent">
+            >_ TS/SCI eligible · OSCP · SDVOSB
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
