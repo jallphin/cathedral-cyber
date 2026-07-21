@@ -11,14 +11,14 @@ import SectionTitle from "../components/SectionTitle.astro";
       align="left"
     />
 
-    <div class="grid lg:grid-cols-3 gap-12 items-start mt-12">
+    <div class="grid lg:grid-cols-3 gap-12 items-stretch mt-12">
       <div class="lg:col-span-1">
-        <div class="relative">
+        <div class="relative h-full overflow-hidden">
           <div class="absolute inset-0 border border-stone translate-x-1 translate-y-1"></div>
           <img
             src="/assets/images/founder.jpg"
             alt="James Allphin"
-            class="relative w-full h-auto border border-stone bg-bg-surface"
+            class="relative w-full h-full object-cover object-top border border-stone bg-bg-surface"
             loading="lazy"
             decoding="async"
           />
@@ -27,18 +27,39 @@ import SectionTitle from "../components/SectionTitle.astro";
 
       <div class="lg:col-span-2 space-y-6 text-text-secondary text-lg leading-relaxed">
         <p class="text-text-primary">
-          I spent over a decade at NIWC Pacific as Chief Hacker and Senior Penetration Tester, leading offensive engagements against the DoD's most critical systems. From warship LAN lockers to SOCOM programs, I've operated in the places that don't make it onto resumes.
+          I've spent 26 years breaking into the things you're trying to protect. At NIWC Pacific, I served as Chief Hacker and Senior Penetration Tester, leading red team operations against the DoD's most critical systems — from warship LAN lockers to SOCOM programs. I've operated in the places that don't make it onto resumes.
         </p>
         <p>
-          Cathedral Cyber is the culmination of that work: a small, veteran-owned red team and penetration testing consultancy built for DoD and federal clients who need clarity, not marketing. We think like adversaries so your defenders don't have to.
+          But I didn't just want to find vulnerabilities. I wanted to understand why they persist. That led me to found the Cyber White Paper Working Group at NIWC Pacific, where HELICS was born. As Principal Investigator, I led the NISE-funded R&D effort that engineered and prototyped HELICS — a blockchain-based integrity monitoring system that proves what changed on a system and when. The research is published on <a href="https://apps.dtic.mil/sti/html/trecms/AD1220342/index.html" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">DTIC</a>; the patent is in stage 2 of 3.
         </p>
         <p>
-          My research in continuous integrity monitoring — using blockchain to prove what changed on a system and when — grew out of frustration with compliance checklists that measure paperwork instead of resilience. The best defense isn't perfect documentation. It's perfect execution.
+          Cathedral Cyber is the culmination of that dual perspective: a veteran-owned red team and penetration testing consultancy built for DoD and federal clients who need clarity, not compliance theater. We think like adversaries, build like engineers, and test like your mission depends on it — because it does.
         </p>
-        <div class="pt-4">
-          <p class="font-mono text-sm text-accent">
-            >_ TS/SCI eligible · OSCP · SDVOSB
-          </p>
+        <div class="pt-4 border-t border-stone-light">
+          <div class="grid sm:grid-cols-2 gap-4 text-sm">
+            <div>
+              <p class="font-mono text-xs uppercase tracking-wider text-text-muted mb-2">Clearances &amp; Certifications</p>
+              <p class="text-text-secondary">TS/SCI eligible · OSCP · GPEN · CEH · CompTIA Security+</p>
+            </div>
+            <div>
+              <p class="font-mono text-xs uppercase tracking-wider text-text-muted mb-2">Business Status</p>
+              <p class="text-text-secondary">SDVOSB · 26+ Years Federal Service</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-6 mt-6 pt-6 border-t border-stone-light">
+            <a href="https://github.com/jallphin" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-text-secondary hover:text-accent transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+              </svg>
+              <span class="text-sm">GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/jamesallphin" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-text-secondary hover:text-accent transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1-2 2 2 2 0 0 1 2-2z"/>
+              </svg>
+              <span class="text-sm">LinkedIn</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
